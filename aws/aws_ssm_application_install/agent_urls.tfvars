@@ -1,0 +1,17 @@
+url_mcafee_redhat = "s3://private-static.mphasis/agents/RedHat/McAfee/installrpm.sh"
+url_snow_redhat = "s3://private-static.mphasis/agents/RedHat/SnowAgent/MPHASIS_LIMITED_RHELsnowagent-5.0.1-1.x86_64.rpm"
+url_mcafee_centos = "s3://private-static.mphasis/agents/CentOS/McAfee/installrpm.sh"
+url_snow_centos = "s3://private-static.mphasis/agents/CentOS/SnowAgent/MPHASIS_LIMITED_RHELsnowagent-5.0.1-1.x86_64.rpm"
+url_mcafee_amzlinux = "s3://private-static.mphasis/agents/AmazonLinux/McAfee/installrpm.sh"
+url_snow_amzlinux = "s3://private-static.mphasis/agents/AmazonLinux/SnowAgent/MPHASIS_LIMITED_RHELsnowagent-5.0.1-1.x86_64.rpm"
+url_mcafee_ubuntu = "s3://private-static.mphasis/agents/Ubuntu/McAfee/installdeb.sh"
+url_snow_ubuntu = "s3://private-static.mphasis/agents/Ubuntu/SnowAgent/MPHASIS_LIMITED_Debian-snowagent_5.0.1-1_amd64.deb"
+url_snow_agent_windows = "s3://private-static.mphasis/agents/Windows/Snow-Agent-Latest-5.3/MPHASIS_LIMITED_snowagent-5.3.0.x64.msi"
+url_scom_agent_windows = "s3://private-static.mphasis/agents/Windows/Lastest-SCOM/64bit/MOMAgent.msi"
+url_mcafee_windows =
+"s3://private-static.mphasis/agents/Windows/McAfee_Endpoint_Security_10_5_4_4035_15_stand_alone_client_install.Zip"
+url_awscli_windows = "https://s3.ap-south-1.amazonaws.com/private-static.mphasis/agents/Windows/AWSCLI/AWSCLI64PY3.msi"
+url_sccm_agent_windows = 
+"s3://private-static.mphasis/agents/Windows/Sccm-2016-New-Client.zip"
+sccm_server = "SRVBAN19STDBVM1.Corp.Mphasis.com"
+sitecode = "SMT"
