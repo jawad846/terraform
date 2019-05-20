@@ -4,6 +4,7 @@ variable "sg_web_alb" {
 
 variable "alb_sub" {
   description = ""
+  type = "list"
 }
 
 variable "https_certificate_arn" {

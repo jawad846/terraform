@@ -1,5 +1,6 @@
 variable "db_sub_goup" {
   description = ""
+  type = "list"
 }
 
 variable "db_pg_family" {
