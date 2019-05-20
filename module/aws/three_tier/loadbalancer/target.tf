@@ -16,9 +16,9 @@ resource "aws_lb_target_group" "tg_web_alb" {
 
 //target group attachment
 
-resource "aws_lb_target_group_attachment" "tg_web_alb_inst_attach_1a" {
-    count            = "${length(var.ec2_target)}"
+resource "aws_lb_target_group_attachment" "tg_web_alb_inst_attach" {
+    count            = "${var.ec2_count}"
     target_group_arn = "${aws_lb_target_group.tg_web_alb.arn}"
-    target_id        = "${element(var.ec2_target, count.index)}"
+    target_id        = "${element(var.ec2_instance, count.index)}"
     port             = "80"
 }

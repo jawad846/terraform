@@ -14,11 +14,15 @@ variable "alb_vpc" {
   description = ""
 }
 
-variable "ec2_target" {
+variable "ec2_instance" {
   description = ""
   type = "list"
 }
 
+
+variable "ec2_count" {
+  description = ""
+}
 
 
 
