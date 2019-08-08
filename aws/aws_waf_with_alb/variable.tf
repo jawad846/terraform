@@ -1,18 +1,20 @@
 variable "profile" {
   description   = "Define Profile Here"
+  default       = "default"
 }
 
-variable "key_access" {
-  description = "Define Access Key"
-}
+# variable "key_access" {
+#   description = "Define Access Key"
+# }
 
-variable "key_secret" {
-  description = "Define Secret Key"
-}
+# variable "key_secret" {
+#   description = "Define Secret Key"
+# }
 
 
 variable "region" {
   description   = "Define Region Here"
+  default       = "default"
 }
 
 variable "aws_vpc_id" {
@@ -87,6 +89,17 @@ variable "name_ipset" {
   description = "define"
 }
 
+variable "name_ipset_1" {
+  description = "define"
+}
+
+variable "name_ipset_2" {
+  description = "Define"
+}
+
+variable "name_ipset_3" {
+  description = "Define"
+}
 variable "name_sqlinj" {
   description = "define"
 }
@@ -98,4 +111,9 @@ variable "name_xssset" {
 variable "name_bytems" {
   description = "Define"
 }
+
+variable "name_bytems_1" {
+  description = "define"
+}
+
 

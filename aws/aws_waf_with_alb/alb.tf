@@ -1,9 +1,9 @@
-resource "aws_lb" "alb_api_test_mobile_example" {
+resource "aws_lb" "alb_api_test_mobile_expo2020dubai" {
   name      = "${var.name_alb}"
   internal  = false
   ip_address_type = "ipv4"
   load_balancer_type    = "application"
-  security_groups       = ["${aws_security_group.sg_alb_api_test_mobile_example.id}"]
+  security_groups       = ["${aws_security_group.sg_alb_api_test_mobile_expo2020dubai.id}"]
   subnets               = ["${var.subnet_1}","${var.subnet_2}"]
   enable_deletion_protection    = true
 
@@ -14,7 +14,7 @@ resource "aws_lb" "alb_api_test_mobile_example" {
 }
 
 resource "aws_lb_listener" "alb_https_listener" {
-  load_balancer_arn     = "${aws_lb.alb_api_test_mobile_example.arn}"
+  load_balancer_arn     = "${aws_lb.alb_api_test_mobile_expo2020dubai.arn}"
   port                  = "443"
   protocol              = "HTTPS"
   ssl_policy            = "ELBSecurityPolicy-2016-08"

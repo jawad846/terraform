@@ -8,7 +8,7 @@ resource "aws_wafregional_byte_match_set" "wafrgbytems_api-test-mobile" {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
   byte_match_tuples {
@@ -18,7 +18,7 @@ resource "aws_wafregional_byte_match_set" "wafrgbytems_api-test-mobile" {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
   byte_match_tuples {
@@ -28,7 +28,7 @@ resource "aws_wafregional_byte_match_set" "wafrgbytems_api-test-mobile" {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
     byte_match_tuples {
@@ -38,7 +38,7 @@ resource "aws_wafregional_byte_match_set" "wafrgbytems_api-test-mobile" {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
   byte_match_tuples {
@@ -48,7 +48,7 @@ resource "aws_wafregional_byte_match_set" "wafrgbytems_api-test-mobile" {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
   byte_match_tuples {
@@ -58,7 +58,7 @@ resource "aws_wafregional_byte_match_set" "wafrgbytems_api-test-mobile" {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
   byte_match_tuples {
@@ -68,7 +68,7 @@ resource "aws_wafregional_byte_match_set" "wafrgbytems_api-test-mobile" {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
   byte_match_tuples {
@@ -78,13 +78,13 @@ resource "aws_wafregional_byte_match_set" "wafrgbytems_api-test-mobile" {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
 }
 
 resource "aws_wafregional_byte_match_set" "wafrgbytems_api-test-mobile_2" {
-  name = "${var.name_bytems}"
+  name = "${var.name_bytems_1}"
 byte_match_tuples {
         text_transformation   = "CMD_LINE"
         target_string         = "curl"
@@ -92,7 +92,7 @@ byte_match_tuples {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
   byte_match_tuples {
@@ -102,7 +102,7 @@ byte_match_tuples {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
   byte_match_tuples {
@@ -112,7 +112,7 @@ byte_match_tuples {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
   byte_match_tuples {
@@ -122,7 +122,7 @@ byte_match_tuples {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
   byte_match_tuples {
@@ -132,7 +132,7 @@ byte_match_tuples {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
   byte_match_tuples {
@@ -142,7 +142,7 @@ byte_match_tuples {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
   byte_match_tuples {
@@ -152,7 +152,7 @@ byte_match_tuples {
 
     field_to_match {
       type = "HEADER"
-      data = "User-Agent"
+      data = "user-agent"
     }
   }
 }
