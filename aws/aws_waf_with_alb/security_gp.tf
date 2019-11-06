@@ -1,6 +1,6 @@
-resource "aws_security_group" "sg_alb_api_test_mobile_expo2020dubai" {
+resource "aws_security_group" "sg_alb_web_serve" {
   name        = "${var.name_sg}"
-  description = "SG for ALB alb_api_test_mobile_expo2020dubai"
+  description = "SG for ALB alb_web_serve"
   vpc_id      = "${var.aws_vpc_id}"
 
   ingress {

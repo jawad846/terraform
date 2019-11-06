@@ -1,4 +1,4 @@
-resource "aws_wafregional_byte_match_set" "wafrgbytems_api-test-mobile" {
+resource "aws_wafregional_byte_match_set" "wafrgbytems_alb_web_server" {
   name = "${var.name_bytems}"
 
   byte_match_tuples {
@@ -83,7 +83,7 @@ resource "aws_wafregional_byte_match_set" "wafrgbytems_api-test-mobile" {
   }
 }
 
-resource "aws_wafregional_byte_match_set" "wafrgbytems_api-test-mobile_2" {
+resource "aws_wafregional_byte_match_set" "wafrgbytems_alb_web_server_2" {
   name = "${var.name_bytems_1}"
 byte_match_tuples {
         text_transformation   = "CMD_LINE"

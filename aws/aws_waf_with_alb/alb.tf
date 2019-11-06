@@ -1,9 +1,9 @@
-resource "aws_lb" "alb_api_test_mobile_expo2020dubai" {
+resource "aws_lb" "alb_web_serve" {
   name      = "${var.name_alb}"
   internal  = false
   ip_address_type = "ipv4"
   load_balancer_type    = "application"
-  security_groups       = ["${aws_security_group.sg_alb_api_test_mobile_expo2020dubai.id}"]
+  security_groups       = ["${aws_security_group.sg_alb_web_serve.id}"]
   subnets               = ["${var.subnet_1}","${var.subnet_2}"]
   enable_deletion_protection    = true
 
@@ -14,7 +14,7 @@ resource "aws_lb" "alb_api_test_mobile_expo2020dubai" {
 }
 
 resource "aws_lb_listener" "alb_https_listener" {
-  load_balancer_arn     = "${aws_lb.alb_api_test_mobile_expo2020dubai.arn}"
+  load_balancer_arn     = "${aws_lb.alb_web_serve.arn}"
   port                  = "443"
   protocol              = "HTTPS"
   ssl_policy            = "ELBSecurityPolicy-2016-08"
@@ -37,7 +37,7 @@ resource "aws_lb_listener_rule" "alb_listener_rule" {
 
   action {
     type             = "forward"
-    target_group_arn = "${aws_lb_target_group.tg_alb_api_test_mobile_1.arn}"
+    target_group_arn = "${aws_lb_target_group.tg_alb_web_serve_target_1.arn}"
   }
 
   condition {
@@ -53,7 +53,7 @@ resource "aws_lb_listener_rule" "alb_listener_rule_1" {
 
   action {
     type             = "forward"
-    target_group_arn = "${aws_lb_target_group.tg_alb_api_test_mobile.arn}"
+    target_group_arn = "${aws_lb_target_group.tg_alb_web_serve_target.arn}"
   }
 
   condition {
@@ -63,7 +63,7 @@ resource "aws_lb_listener_rule" "alb_listener_rule_1" {
 }
 
 
-resource "aws_lb_target_group" "tg_alb_api_test_mobile" {
+resource "aws_lb_target_group" "tg_alb_web_serve_target" {
   name     = "${var.name_alb_tg_1}"
   port     = 8280
   protocol = "HTTP"
@@ -81,20 +81,20 @@ resource "aws_lb_target_group" "tg_alb_api_test_mobile" {
 }
 
 
-resource "aws_lb_target_group_attachment" "tg-alb-api-test-mobile_az1" {
-    target_group_arn = "${aws_lb_target_group.tg_alb_api_test_mobile.arn}"
+resource "aws_lb_target_group_attachment" "tg-alb-web_server_az1" {
+    target_group_arn = "${aws_lb_target_group.tg_alb_web_serve_target.arn}"
     target_id        = "${var.alb_tg_1_instance}"
     port             = "8280"
 }
 
-resource "aws_lb_target_group_attachment" "tg-alb-api-test-mobile_az2" {
-    target_group_arn = "${aws_lb_target_group.tg_alb_api_test_mobile.arn}"
+resource "aws_lb_target_group_attachment" "tg-alb-web_server_az2" {
+    target_group_arn = "${aws_lb_target_group.tg_alb_web_serve_target.arn}"
     target_id        = "${var.alb_tg_2_instance}"
     port             = "8280"
 }
 
 
-resource "aws_lb_target_group" "tg_alb_api_test_mobile_1" {
+resource "aws_lb_target_group" "tg_alb_web_serve_target_1" {
   name     = "${var.name_alb_tg_2}"
   port     = 9443
   protocol = "HTTPS"
@@ -112,14 +112,14 @@ resource "aws_lb_target_group" "tg_alb_api_test_mobile_1" {
 }
 
 
-resource "aws_lb_target_group_attachment" "tg-alb-api-test-mobile-az-1" {
-    target_group_arn = "${aws_lb_target_group.tg_alb_api_test_mobile_1.arn}"
+resource "aws_lb_target_group_attachment" "tg-alb-web_server-az-1" {
+    target_group_arn = "${aws_lb_target_group.tg_alb_web_serve_target_1.arn}"
     target_id        = "${var.alb_tg_1_instance}"
     port             = "9443"
 }
 
-resource "aws_lb_target_group_attachment" "tg-alb-api-test-mobile-az-2" {
-    target_group_arn = "${aws_lb_target_group.tg_alb_api_test_mobile_1.arn}"
+resource "aws_lb_target_group_attachment" "tg-alb-web_server-az-2" {
+    target_group_arn = "${aws_lb_target_group.tg_alb_web_serve_target_1.arn}"
     target_id        = "${var.alb_tg_2_instance}"
     port             = "9443"
 }

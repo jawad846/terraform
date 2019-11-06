@@ -1,4 +1,4 @@
-resource "aws_wafregional_xss_match_set" "wafrgxssms_api-test-mobile" {
+resource "aws_wafregional_xss_match_set" "wafrgxssms_alb_web_server" {
   name = "${var.name_xssset}"
 
   xss_match_tuple {

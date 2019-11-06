@@ -1,4 +1,4 @@
-resource "aws_wafregional_ipset" "wafrgips_api-test-mobile_2" {
+resource "aws_wafregional_ipset" "wafrgips_alb_web_server_2" {
   name = "${var.name_ipset_2}"
 
 ip_set_descriptor {

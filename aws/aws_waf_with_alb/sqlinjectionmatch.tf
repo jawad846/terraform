@@ -1,4 +1,4 @@
-resource "aws_wafregional_sql_injection_match_set" "wafrgsqlinj_api-test-mobile" {
+resource "aws_wafregional_sql_injection_match_set" "wafrgsqlinj_alb_web_server" {
   name = "${var.name_sqlinj}"
 
 sql_injection_match_tuple {
