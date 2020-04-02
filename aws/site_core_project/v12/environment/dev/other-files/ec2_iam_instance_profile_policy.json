@@ -1,0 +1,35 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListAllMyBuckets",
+                "s3:HeadBucket",
+                "s3:ReplicateObject",
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:RestoreObject",
+                "s3:ListBucket",
+                "s3:DeleteObject",
+                "s3:ReplicateDelete",
+                "ec2:Describe*",
+                "kms:EnableKey",
+                "kms:Get*",
+                "kms:Import*",
+                "kms:Decrypt",
+                "kms:Generate*",
+                "kms:Verify",
+                "kms:List*",
+                "kms:Describe*",
+                "kms:Encrypt",
+                "kms:Connect*",
+                "kms:Sign",
+                "kms:Re*",
+                "ssm:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

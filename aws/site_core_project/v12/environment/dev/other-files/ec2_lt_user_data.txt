@@ -1,0 +1,33 @@
+<powershell>
+Write-Output "Installing RSAT-AD-PowerShell"
+Install-WindowsFeature RSAT-AD-PowerShell >> c:\user_data.log
+aws s3 cp 's3://expo-mgmt/certificate/schools-expo2020.pfx' C:\certificates\ --region eu-west-1
+$expo2020dubaiCertPath = 'c:\certificates\schools-expo2020.pfx'
+$certPass = (Get-SSMParameterValue -Name /certificate/password -WithDecryption $True).Parameters[0].Value | ConvertTo-SecureString -AsPlainText -Force
+$expo2020dubaiPass = $certPass
+Get-ChildItem Cert:\LocalMachine\My\9CB3D847B5B2481757C63C376EF35FAF0E1F59EF -ErrorAction SilentlyContinue
+if ($?) {Get-ChildItem Cert:\LocalMachine\My\9CB3D847B5B2481757C63C376EF35FAF0E1F59EF | Remove-Item}
+$pfxExpo2020Dubai = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
+$pfxExpo2020Dubai.Import($expo2020dubaiCertPath,$expo2020dubaiPass,"Exportable,PersistKeySet,MachineKeySet")
+$store = New-Object System.Security.Cryptography.X509Certificates.X509Store("My","LocalMachine")
+$store.Open("ReadWrite")
+$store.Add($pfxExpo2020Dubai)
+$store.Close()
+$certThumbprint = $pfxExpo2020Dubai.Thumbprint
+Write-Output "The Expo 2020 Dubai Certificate is installed"
+Write-Output '$certThumbprint'
+Remove-Item 'C:\certificates' -Recurse
+$currenthostname = hostname
+$instanceId = ((Invoke-WebRequest -Uri http://169.254.169.254/latest/meta-data/instance-id -UseBasicParsing).Content)
+$seq_num = Get-Random -Maximum 99
+$region = 'eu-west-1'
+$newhostname = (aws ec2 describe-instances --instance-id $instanceId --region $region --query 'Reservations[0].Instances[0].Tags[?Key==`NAME`].Value' --output text)
+echo $newhostname$seq_num
+$domain = (Get-SSMParameterValue -Name /domain/name).Parameters[0].Value
+$username = (Get-SSMParameterValue -Name /domain/username).Parameters[0].Value
+$domain_username = "$domain\$username"
+$password = (Get-SSMParameterValue -Name /domain/password -WithDecryption $True).Parameters[0].Value | ConvertTo-SecureString -AsPlainText -Force
+$credential = New-Object System.Management.Automation.PSCredential($domain_username,$password)
+Add-Computer -DomainName $domain -ComputerName "$currenthostname" -NewName "$newhostname$seq_num" -Credential $credential
+Restart-Computer -Force
+</powershell>

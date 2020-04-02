@@ -1,0 +1,17 @@
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1578480385706",
+    "Statement": [
+        {
+            "Sid": "Stmt1578480384390",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:Get*",
+                "s3:Put*",
+                "s3:List*"
+            ],
+            "Resource": "${aws_s3_bucket.s3_scp_data.arn}/*"
+        }
+    ]
+}
