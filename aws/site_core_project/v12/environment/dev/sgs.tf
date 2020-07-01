@@ -1,8 +1,35 @@
-module "dev_ec2_sgs_content_devlivery" {
-  source = "../../modules/sgs"
+// module "dev_ec2_sgs_content_devlivery" {
+//   source = "../../modules/sgs"
+//   name_security_groups
+//   vpc_id
+//   from_port_sgs_in
+//   to_port_sgs_in
+//   protocol_sgs_in
+//   cidr_blocks_sgs_in
+//   from_port_sgs_eg
+//   to_port_sgs_eg
+//   protocol_sgs_eg
+//   cidr_blocks_sgs_eg
+// }
 
-  vpc_id                    = module.dev_vpc.vpc_id
-  name_security_groups  = "scp-dev-sg-ec2-me-south-1-content-delivery"
+
+#########################################################
+
+
+module "ec2_sgs_solr_master" {
+  source = "../modules/sgs"
+
+  vpc_id                    = "module.dev_vpc.vpc_id"
+  name_security_groups      = "ec2_sgs_solr_master"
+  ingress_rules             = var.sg_ec2_sgs_solr_master_ingress
+  egress_rules              = var.sg_ec2_sgs_solr_master_egress
+}
+
+// module "dev_ec2_sgs_content_devlivery" {
+//   source = "../../modules/sgs"
+
+//   vpc_id                    = module.dev_vpc.vpc_id
+//   name_security_groups  = "scp-dev-sg-ec2-me-south-1-content-delivery"
 //   security_groups_ingress   = [
 //       {
 //         from_port   = 443
@@ -20,7 +47,9 @@ module "dev_ec2_sgs_content_devlivery" {
 //       }
 //   ]
 
-}
+// }
+
+
 
 
 

@@ -1,3 +1,13 @@
+
+locals {
+  sg_sp_rules = [
+    { type = ingress, from_port = 80, to_port = 80, protocol = tcp, cidr_blocks = 1.2.3.4/32, description = test },
+    { type = ingress, from_port = 443, to_port = 443, protocol = tcp, cidr_blocks = 1.2.3.4/32, description = test },
+    { type = ingress, from_port = 22, to_port = 22, protocol = tcp, cidr_blocks = 1.2.3.4/32, description = test },
+  ]
+}
+
+
 resource "aws_security_group_rule" "ingress_rules" {
     count = length(var.ingress_rules) > 0 ? length(var.ingress_rules) : 0
     type              = "ingress"
@@ -20,51 +30,12 @@ resource "aws_security_group_rule" "ingress_rules" {
 
 
 resource "aws_security_group_rule" "ingress_with_cidr_blocks" {
-
-
-
-  count = length(var.ingress_with_cidr_blocks) > 0 ? length(var.ingress_with_cidr_blocks) : 0
-
-
-
-
-
-
-
-  security_group_id = aws_security_group.default.id
-
-
-
-  type              = "ingress"
-
-
-
-
-
-
-
-  cidr_blocks = split(",", lookup(var.ingress_with_cidr_blocks[count.index], "cidr_blocks", ""))
-
-
-
-
-
-
-
-  description  = lookup(var.ingress_with_cidr_blocks[count.index], "description", "Ingress Rule")
-
-
-
-  from_port = lookup(var.ingress_with_cidr_blocks[count.index], "from_port", var.rules[lookup(var.ingress_with_cidr_blocks[count.index], "rule", "_")][0])
-
-
-
-  to_port   = lookup(var.ingress_with_cidr_blocks[count.index], "to_port", var.rules[lookup(var.ingress_with_cidr_blocks[count.index], "rule", "_")][1])
-
-
-
-  protocol  = lookup(var.ingress_with_cidr_blocks[count.index], "protocol", var.rules[lookup(var.ingress_with_cidr_blocks[count.index], "rule", "_")][2])
-
-
-
+count = length(var.ingress_with_cidr_blocks) > 0 ? length(var.ingress_with_cidr_blocks) : 0
+security_group_id = aws_security_group.default.id
+type              = "ingress"
+cidr_blocks = split(",", lookup(var.ingress_with_cidr_blocks[count.index], "cidr_blocks", ""))
+description  = lookup(var.ingress_with_cidr_blocks[count.index], "description", "Ingress Rule")
+from_port = lookup(var.ingress_with_cidr_blocks[count.index], "from_port", var.rules[lookup(var.ingress_with_cidr_blocks[count.index], "rule", "_")][0])
+to_port   = lookup(var.ingress_with_cidr_blocks[count.index], "to_port", var.rules[lookup(var.ingress_with_cidr_blocks[count.index], "rule", "_")][1])
+protocol  = lookup(var.ingress_with_cidr_blocks[count.index], "protocol", var.rules[lookup(var.ingress_with_cidr_blocks[count.index], "rule", "_")][2])
 }
